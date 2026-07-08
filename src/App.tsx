@@ -1,31 +1,20 @@
-import { useEffect, useState } from 'react'
-import { fetchPopularMovies } from './apis/movieApi'
-import Header from './components/Header/Header'
-import MovieList from './components/MovieList/MovieList'
-import type { Movie } from './types/movie'
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import MyPage from "./pages/MyPage";
+import LoginPage from "./pages/LoginPage";
+import Toast from "./components/Toast/Toast";
 
 function App() {
-  const [movies, setMovies] = useState<Movie[]>([])
-
-  useEffect(() => {
-    async function loadPopularMovies() {
-      const popularMovies = await fetchPopularMovies()
-      setMovies(popularMovies)
-    }
-
-    loadPopularMovies()
-  }, [])
-
   return (
-    <>
-      <Header />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
 
-      <main className="main-content">
-        <MovieList movies={movies} />
-      </main>
-    </>
-  )
+      <Toast />
+    </BrowserRouter>
+  );
 }
-
-export default App
+export default App;

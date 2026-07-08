@@ -6,3 +6,161 @@
   background-color: #000;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  width: 300px;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 10px;
+  margin-left: auto;
+}
+
+.search-box input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 사람 아이콘 버튼 감싸는 영역 */
+.mypage-menu-wrapper {
+  position: relative;
+  margin-left: 16px;
+}
+
+/* 사람 아이콘 버튼 */
+.mypage-button {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mypage-button img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
+}
+
+.mypage-button:hover {
+  background: transparent;
+}
+
+.mypage-button:hover img {
+  opacity: 0.85;
+}
+
+.mypage-button:focus {
+  outline: none;
+}
+
+/* 혹시 전역 button hover 스타일이 있을 때 덮어쓰기 */
+.header .mypage-button,
+.header .mypage-button:hover,
+.header .mypage-button:focus,
+.header .mypage-button:active {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* 드롭다운 메뉴 */
+.mypage-dropdown {
+  position: absolute;
+  top: 68px;
+  right: 0;
+  width: 150px;
+  border-radius: 12px;
+  background-color: #f4f5f7;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  overflow: visible;
+  z-index: 20;
+}
+
+/* 말풍선 삼각형 */
+.mypage-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  right: 24px;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 18px solid #f4f5f7;
+}
+
+/* 드롭다운 버튼 */
+.dropdown-item {
+  width: 100%;
+  height: 58px;
+  border: none;
+  background-color: transparent;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.dropdown-item + .dropdown-item {
+  border-top: 1px solid #999999;
+}
+
+.dropdown-item:hover {
+  background-color: #e8e8e8;
+}
+
+/* 로그아웃 버튼 hover 시 위쪽 둥글게 유지 */
+.dropdown-item:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* 마이페이지 버튼 hover 시 아래쪽 둥글게 유지 */
+.dropdown-item:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.dropdown-item.logout {
+  color: #ff4d4d;
+}
+
+.logo-button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.logo-button img {
+  display: block;
+}
+
+.logo-button:hover {
+  background: transparent;
+}
+
+.logo-button:focus {
+  outline: none;
+}

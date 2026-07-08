@@ -1,5 +1,13 @@
 .main-content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 75px 24px 80px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.infinite-scroll-target {
+  width: 100%;
+  height: 40px;
 }

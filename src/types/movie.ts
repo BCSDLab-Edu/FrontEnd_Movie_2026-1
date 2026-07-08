@@ -29,3 +29,11 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
 }
+
+// 모달 구현 추가: 영화 상세 API에서 장르 이름 분리하여 받아오기 위한 타입입니다.
+export interface MovieDetail extends Omit<Movie, "genre_ids"> {
+  genres: {
+    id: number;
+    name: string;
+  }[];
+}

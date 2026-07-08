@@ -1,26 +1,24 @@
 .movie-list {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  width: 920px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 824px;
 }
 
 .movie-list-title {
-  margin: 0;
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 36px;
-  color: rgba(255, 255, 255, 0.87);
+  width: 100%;
+  margin-bottom: 28px;
 }
 
 .movies {
   display: grid;
   grid-template-columns: repeat(4, 182px);
-  gap: 64px;
+  gap: 32px;
 }
 
 @media (max-width: 960px) {
+  .movie-list {
+    max-width: 626px;
+  }
+
   .movies {
     grid-template-columns: repeat(3, 182px);
     gap: 40px;
@@ -28,6 +26,10 @@
 }
 
 @media (max-width: 680px) {
+  .movie-list {
+    max-width: 384px;
+  }
+
   .movies {
     grid-template-columns: repeat(2, 182px);
     gap: 32px 20px;
@@ -35,8 +37,22 @@
 }
 
 @media (max-width: 420px) {
+  .movie-list {
+    max-width: 182px;
+  }
+
   .movies {
     grid-template-columns: 182px;
-    justify-content: center;
   }
+}
+
+.moreMovie {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 36px;
+
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: rgb(227, 4, 4);
 }
