@@ -1,11 +1,10 @@
-import type { RefObject } from "react";
 import type { Movie } from "../../types/movie";
 import MovieCard from "../MovieCard/MovieCard";
 
 interface MovieListProps {
   movies: Movie[];
   onMovieClick: (movie: Movie) => void;
-  loadMoreRef: RefObject<HTMLDivElement | null>;
+  loadMoreRef: (node?: Element | null) => void;
   isFetchingNextPage: boolean;
 }
 
@@ -29,8 +28,6 @@ function MovieList({
         ))}
       </div>
       <div ref={loadMoreRef} className="h-[40px] text-center text-[#ffffff]">
-        {" "}
-        //감지할 div를 만들어서 IntersectionObserver로 감지
         {isFetchingNextPage ? "불러오는 중..." : ""}
       </div>
     </section>
