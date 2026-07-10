@@ -20,16 +20,19 @@ function App() {
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
+      //무한 스크롤을 위한 useInfiniteQuery
       queryKey: ["movies", submittedSearch],
       queryFn: ({ pageParam }) => {
+        //api 호출하는 함수
         if (submittedSearch.trim()) {
           return searchMovies(submittedSearch, pageParam);
         }
 
-        return fetchPopularMovies(pageParam);
+        return fetchPopularMovies(pageParam); //검색어 없으면 인기 영화 가져오기
       },
-      initialPageParam: 1,
+      initialPageParam: 1, //초기값
       getNextPageParam: (lastPage) => {
+        //다음 페이지 가져오는 함수
         if (lastPage.page < lastPage.total_pages) {
           return lastPage.page + 1;
         }
@@ -38,7 +41,7 @@ function App() {
       },
     });
 
-  const movies = data?.pages.flatMap((page) => page.results) ?? [];
+  const movies = data?.pages.flatMap((page) => page.results) ?? []; //자동으로 다음 페이지 부르는 부분
 
   useEffect(() => {
     const target = loadMoreRef.current;
@@ -47,11 +50,12 @@ function App() {
       return;
     }
 
-    const observer = new IntersectionObserver(
+    const observer = new IntersectionObserver( //IntersectionObserver를 이용해서 스크롤 감지
       (entries) => {
         const [entry] = entries;
 
         if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+          //중복 요청 방지를 위해 확인
           fetchNextPage();
         }
       },
