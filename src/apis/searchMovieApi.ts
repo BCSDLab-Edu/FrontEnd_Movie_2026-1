@@ -1,9 +1,12 @@
 import { BASE_URL } from "../constants/movie";
-import type { Movie, MovieAPIResponse } from "../types/movie";
+import type { MovieAPIResponse, MovieAPISuccess } from "../types/movie";
 
 const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
-export async function searchMovies(query: string, page = 1): Promise<Movie[]> {
+export async function searchMovies(
+  query: string,
+  page = 1,
+): Promise<MovieAPISuccess> {
   //자동 URL 인코딩
   const params = new URLSearchParams({
     query,
@@ -20,7 +23,7 @@ export async function searchMovies(query: string, page = 1): Promise<Movie[]> {
   const data: MovieAPIResponse = await response.json();
 
   if ("results" in data) {
-    return data.results;
+    return data;
   }
 
   throw new Error(data.status_message);
